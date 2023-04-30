@@ -1,18 +1,15 @@
-import { createRouter, createWebHistory, RouteRecordRaw, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import routerConfig from "@/utils/Router/index";
-import { Meta, RouterConfig } from '@/utils/Router/dto'
+import { Meta, RouterConfig, RoutesItem } from '@/utils/Router/dto'
 import { firstToLowerCase } from '@/utils/String'
 import { defineAsyncComponent } from 'vue'
 import NProgress from 'nprogress' // 引入第三方进度条库
 import 'nprogress/nprogress.css'
-type MainChildRoute = RouteRecordRaw & { // 拓展原有route type 添加meat属性
-  meta?: Meta
-}
 // 获取路由 生成子路由逻辑开发中
-function getMainRoute(): MainChildRoute[] {
-  const mainChildRoute: MainChildRoute[] = []
+function getRoutes(): RoutesItem[] {
+  const routesItems: RoutesItem[] = []
   const getRoute = function (pathName: string, meta: Meta) {
-    const route: MainChildRoute = {
+    const route: RoutesItem = {
       // 将文件夹名首字母改为小写设置为path
       path: '/' + firstToLowerCase(pathName),
       name: pathName,
@@ -32,31 +29,27 @@ function getMainRoute(): MainChildRoute[] {
           title: ''
         }
         const obj = getRoute(pathName, meta)
-        mainChildRoute.push(obj)
+        routesItems.push(obj)
       })
     } else {
       const obj = getRoute(config.pathName || '', config.meta || {
         title: ''
       })
-      mainChildRoute.push(obj)
+      routesItems.push(obj)
     }
   })
-  return mainChildRoute
+  return routesItems
 }
-// const routes: RouteRecordRaw[] = [
-const routes: Array<MainChildRoute> = getMainRoute();
+// const routes: RoutesItem[] = [
+const routes: Array<RoutesItem> = getRoutes();
 const router = createRouter({
   history: createWebHashHistory(process.env.BASE_URL),
-  routes,
+  routes: routes,
 });
 router.beforeEach((to, from) => {
-  //
   NProgress.start()
-  console.log(222)
-
 })
 router.afterEach(() => {
-
   NProgress.done();
 });
 export default router;
