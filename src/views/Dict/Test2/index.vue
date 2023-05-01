@@ -1,4 +1,5 @@
 <template>
+
   <dict-test />
 </template>
 <script lang="ts" setup>

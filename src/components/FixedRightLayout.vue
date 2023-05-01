@@ -33,7 +33,7 @@ withDefaults(defineProps<LayoutProps>(), {
   //display: inline-block;
 }
 .clearfix{
-  height: calc(100% - 50px);
+  height: calc(100% - 20px);
   &::after {
     content: "";
     display: table;

@@ -18,5 +18,5 @@ import { useRoute } from "vue-router";
 // route
 const route = useRoute()
 // 字典数据
-const dictData = computed(() => filterRouteItem(route.name))
+const dictData = computed(() => filterRouteItem(route))
 </script>

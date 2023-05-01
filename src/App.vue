@@ -2,17 +2,7 @@
   <div class="common-layout">
     <el-container>
       <el-aside width="200px">
-        <el-menu
-            class="el-menu-vertical"
-            :router="true"
-        >
-          <el-menu-item :index="item.path" :key="index" v-for="(item, index) in Menu">
-            <template #title>
-              <i class="iconfont" :class="item?.meta?.icon"></i>
-              <span>{{item?.meta?.title}}</span>
-            </template>
-          </el-menu-item>
-        </el-menu>
+        <left />
       </el-aside>
       <el-container>
 <!--        <el-header>Header</el-header>-->
@@ -27,7 +17,8 @@
 </template>
 <script lang="ts" setup>
   import { watch } from 'vue'
-  import Menu from '@/utils/Menu'
+  // import Menu from '@/utils/Menu'
+  import Left from '@/components/IndexLayout/Left'
   import { useStore } from "vuex";
   import { useRoute } from "vue-router";
   const store = useStore()

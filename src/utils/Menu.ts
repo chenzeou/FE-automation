@@ -4,4 +4,5 @@
  */
 import router from "@/router";
 const routers = router.options.routes
+console.log('routers', routers)
 export default routers

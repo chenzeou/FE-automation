@@ -4,17 +4,22 @@
  */
 import Automation from '@/dict/automation'
 import {Api} from "@/dict/dto";
+import { RoutesItem } from "@/utils/Router/dto";
 import {getStateName} from "@/utils/String";
 import {useStore} from "vuex";
-const store = useStore()
+
 
 /**
  * 辅助测试工具，代码不严谨 用于实战需优化
- * @param routeName
+ * @param route
  */
-export function filterRouteItem(routeName: any) {
+export function filterRouteItem(route: RoutesItem) {
+    const store = useStore()
     const apiList = Automation[0].apiList
-    const filters: any = apiList?.filter(item => Object.keys(item.useRoutePathName).includes(routeName.toLowerCase()))
+    const filters: any = apiList?.filter(item => {
+        const routePathNames = Object.keys(item.useRoutePathName)
+        return routePathNames.includes(<string>route.name) || routePathNames.includes(<string>route.path.replace('/', ''))
+    })
     return filters.map((item: any) => {
         item.dicData = store.state.dict[getStateName(item.url, false)] || {
             options: []

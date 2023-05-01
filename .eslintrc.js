@@ -16,8 +16,6 @@ module.exports = {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-async-promise-executor": "off",
-    "vue/multi-word-component-names": ["error",{
-      "ignores": ["index","main"]//需要忽略的组件名
-    }]
+    "vue/multi-word-component-names": 'off'
   },
 };
