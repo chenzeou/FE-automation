@@ -3,9 +3,9 @@
  * @Date: 2023-04-22 12:30:14
  */
 // 首字母小写
-export const firstToLowerCase = (str: string) => {
+export const firstToLowerCase = (str: string | undefined) => {
 
-    return str[0].toLowerCase() + str.substr(1);
+    return str ? str[0].toLowerCase() + str.substr(1) : '';
 };
 // 首字母大写
 export const firstToUpperCase = (str: string) => {
@@ -34,3 +34,11 @@ export const getActionName = (service: string, url: string) => {
     //
     return `${service}${getStateName(url)}`;
 };
+/**
+ * 判断某个字符出现的次数
+ * @param str 输入字符串
+ * @param char 判断出现的字符
+ */
+export const countOccurrences = (str: string | undefined, char: string): number => {
+    return ((str || '').split(char).length - 1);
+}
