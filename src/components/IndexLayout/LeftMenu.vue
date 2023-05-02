@@ -1,7 +1,7 @@
 <template>
   <el-menu
       class="el-menu-vertical"
-      :router="true"
+      :router="false"
   >
     <left-menu-item
         v-for="item in menuData"

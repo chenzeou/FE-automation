@@ -15,7 +15,7 @@
     </el-sub-menu>
   </template>
   <template v-else>
-    <el-menu-item :index="childItem.path">
+    <el-menu-item :index="childItem.path" @click="routerTo(childItem)">
       <i class="iconfont" :class="childItem?.meta?.icon"></i>
       <span>{{childItem?.meta?.title}}</span>
     </el-menu-item>
@@ -24,15 +24,23 @@
 <script lang="ts" setup>
 import { defineProps, withDefaults} from 'vue';
 import {RoutesItem} from "@/utils/Router/dto";
+import { useRouter } from "vue-router";
 
 interface MenuProps {
   childItem: RoutesItem
 }
-
+const router = useRouter()
 withDefaults(defineProps<MenuProps>(), {
-  childItem: () => ({}),
+  childItem: {} as any,
 })
-
+/**
+ * 跳转路由
+ * @param route
+ */
+const routerTo = (route: RoutesItem) => {
+  if (route.children?.length) return
+  router.push(route)
+}
 </script>
 <style lang="scss" scoped>
 </style>

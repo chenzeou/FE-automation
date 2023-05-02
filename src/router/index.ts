@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import { getRoutes } from "@/utils/Router/index";
+import { getRoutes } from "@/utils/Router";
 import {  RoutesItem } from '@/utils/Router/dto'
 import NProgress from 'nprogress' // 引入第三方进度条库
 import 'nprogress/nprogress.css'

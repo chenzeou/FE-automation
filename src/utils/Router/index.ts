@@ -48,12 +48,15 @@ export function getRoutes(): RoutesItem[] {
         // 获取当前配置文件的路径名
         const pathArr = config.basePath?.split('/') || []
         const pathName = (pathArr)[pathArr.indexOf('config.ts') - 1]
-
-        // 将基础路径中的斜杠替换为短横线，作为路由地址
+        // 首字母小写做为path
+        const path = firstToLowerCase(pathName)
+        // 将基础路径中的config.ts替换为空，剩下作为路由的key方便后续逻辑使用
         const key: string = config.basePath?.replace('config.ts', '') || ''
+
         const route: RoutesItem = {
             key,
-            path: '/' + firstToLowerCase(pathName),
+            // 长度等于2的时候是根路由[根路由,config.ts]，子路由路径用相对路径
+            path: pathArr.length > 2 ? path :  '/' + path,
             name: firstToLowerCase(key.replace(/\//g, '')),
             component: defineAsyncComponent(() => import(`@/views/${key}`))
         }
