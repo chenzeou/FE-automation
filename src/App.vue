@@ -17,8 +17,7 @@
 </template>
 <script lang="ts" setup>
   import { watch } from 'vue'
-  // import Menu from '@/utils/Menu'
-  import Left from '@/components/IndexLayout/Left'
+  import Left from '@/components/IndexLayout/Left.vue'
   import { useStore } from "vuex";
   import { useRoute } from "vue-router";
   const store = useStore()
@@ -28,8 +27,8 @@
       () => {
         const name = route.name;
         const path = route.path;
-        const getActions = (name: string) => store.state?.dict?.routeGetActionsName[name] || false
-        const routeGetActionsName = getActions(name) || getActions(path.split('/')[1])
+        const getActions = (name: string) => (store.state?.dict?.routeGetActionsName[name] || false)
+        const routeGetActionsName = getActions((name || '').toString()) || getActions(path.split('/')[1])
         if (routeGetActionsName) {
           for (let [params, actions] of routeGetActionsName) {
             store.dispatch(actions, params);

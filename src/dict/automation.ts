@@ -13,8 +13,8 @@ export default [
                 methods: 'get',
                 cache: true,
                 useRoutePathName: {
-                    test1: [],
-                    test2: [],
+                    dictTest1Test11Test111: [],
+                    dictTest2: [],
                 },
                 labelValueKeys: ['name', 'value'],
                 needBasicData: true
@@ -24,8 +24,8 @@ export default [
                 methods: 'get',
                 cache: true,
                 useRoutePathName: {
-                    test1: [],
-                    test3: [],
+                    dictTest1Test11Test111: [],
+                    dictTest3: [],
                 },
                 labelValueKeys: ['name', 'value'],
                 needBasicData: true
@@ -35,8 +35,8 @@ export default [
                 methods: 'get',
                 cache: true,
                 useRoutePathName: {
-                    test2: [],
-                    test3: [],
+                    dictTest2: [],
+                    dictTest3: [],
                 },
                 labelValueKeys: ['name', 'value'],
                 needBasicData: true
@@ -46,9 +46,9 @@ export default [
                 methods: 'get',
                 cache: true,
                 useRoutePathName: {
-                    test2: [],
-                    test3: [],
-                    test5: []
+                    dictTest2: [],
+                    dictTest3: [],
+                    dictTest5: []
                 },
                 labelValueKeys: ['name', 'value'],
                 needBasicData: true
@@ -58,10 +58,10 @@ export default [
                 methods: 'get',
                 cache: true,
                 useRoutePathName: {
-                    test1: [],
-                    test2: [],
-                    test3: [],
-                    test4: []
+                    dictTest1Test11Test111: [],
+                    dictTest2: [],
+                    dictTest3: [],
+                    dictTest4: []
                 },
                 labelValueKeys: ['name', 'value'],
                 needBasicData: true
