@@ -20,20 +20,24 @@ const configs: RouterConfig[] = []
 
 // 遍历 viewsRequireContext 中的每个路径，读取相应的配置文件内容，并将配置信息转换为 RouterConfig 对象，再将其添加到数组 configs 中保存
 viewsRequireContext.keys().forEach((path) => {
+
     // 获取当前配置文件内容
     const modulesContent = viewsRequireContext(path);
+    // 是否包含路由配置
+    if (modulesContent._ROUTE) {
+        // 设置源路径
+        const basePath = path.replace('./', '')
 
-    // 设置源路径
-    const basePath = path.replace('./', '')
+        // 根据当前配置文件内容生成路由配置对象
+        const config: RouterConfig = {
+            basePath,
+            ...modulesContent._ROUTE,
+        }
 
-    // 根据当前配置文件内容生成路由配置对象
-    const config: RouterConfig = {
-        basePath,
-        ...modulesContent.routeConfig,
+        // 将当前路由配置对象添加到 configs 数组中
+        configs.push(config)
     }
 
-    // 将当前路由配置对象添加到 configs 数组中
-    configs.push(config)
 });
 
 /**

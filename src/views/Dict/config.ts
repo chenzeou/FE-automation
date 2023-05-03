@@ -4,7 +4,7 @@
  */
 import { RouterConfig } from '@/utils/Router/dto'
 
-export const routeConfig: RouterConfig = {
+export const _ROUTE: RouterConfig = {
     meta: {
         title: '字典自动加载测试',
         icon: 'icon-tubiao1'

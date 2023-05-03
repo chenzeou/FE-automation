@@ -4,7 +4,7 @@
  */
 import { RouterConfig } from '@/utils/Router/dto'
 // console.log(__dirname)
-export const routeConfig: RouterConfig = {
+export const _ROUTE: RouterConfig = {
     meta: {
         title: '首页',
         icon: 'icon-zhuye'
